@@ -8,23 +8,17 @@ var watch = new Stopwatch(timer);
 
 function start() {
     watch.start();
-    toggleBtn.textContent = 'Stop';
+    document.getElementById('lightning').style.display = "none";
+    document.getElementById('thunder').style.display = "block";
 }
 
 function stop() {
+    document.getElementById('lightning').style.display = "block";
+    document.getElementById('thunder').style.display = "none";
   watch.stop();
-       toggleBtn.textContent = 'Start';  
+    applyPos();
+    
 }
-
-
-
-toggleBtn.addEventListener('click', function() {
-   (watch.isOn) ? stop() : start();
-}); 
-
-resetBtn.addEventListener('click', function() {
-   watch.reset();
-});
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;

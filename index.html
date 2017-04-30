@@ -54,17 +54,24 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlibmzzHvy4GDNmd8cBuubgWV
     </nav>---->
     
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-  <form>
+  <!--<form>
 Radius <input type="text" name="Radius" value="70000"><br>
 <input type="text" name="lat" class="hidden" id="currentLat" value="lsangh">
 <input type="text" name="long" class="hidden" id="currentLong" value="lsangh"> 
       <button id="cityRadius" type="submit" value="Submit" onclick="applyPos()">SUBMIT</button>
       
-</form>
+</form>-->
     <div id="map"></div>
     <div id="timer-container">
     <h1 id="timer">00.00.000</h1>
-    <button id="toggle">Start</button><button id="reset">Reset</button>
+    <button id="lightning" onclick="start()">Saw lightning!</button><!---<button id="reset">Reset</button>--->
+    
+       <form>
+       <input type="text" class="hidden" name="Radius" value="70000"><br>
+<input type="text" name="lat" class="hidden" id="currentLat" value="lsangh">
+<input type="text" name="long" class="hidden" id="currentLong" value="lsangh"> 
+        <button type="submit" id="thunder" onclick="applyPos()">Heard Thunder!</button>
+    </form>
     </div>
     
    
