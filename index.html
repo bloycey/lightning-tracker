@@ -64,13 +64,18 @@ Radius <input type="text" name="Radius" value="70000"><br>
     <div id="map"></div>
     <div id="timer-container">
     <h1 id="timer">00.00.000</h1>
-    <button id="lightning" onclick="start()">Saw lightning!</button><!---<button id="reset">Reset</button>--->
+    <button id="lightning" onclick="start()">Saw lightning!</button>
     
-       <form>
-       <input type="text" class="hidden" name="Radius" value="70000"><br>
+       
+    <p id="lightningSummary"></p>
+    
+<button id="reset" onclick="reset()">Reset Lightning Tracker</button>
+   
+   <form>
+       <input type="text" class="hidden" id="currentRadius" name="Radius" value="70000"><br>
 <input type="text" name="lat" class="hidden" id="currentLat" value="lsangh">
 <input type="text" name="long" class="hidden" id="currentLong" value="lsangh"> 
-        <button type="submit" id="thunder" onclick="applyPos()">Heard Thunder!</button>
+        <button type="submit" id="thunder" onclick="stop()">Heard Thunder!</button>
     </form>
     </div>
     

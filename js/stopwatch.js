@@ -1,3 +1,4 @@
+
 function Stopwatch(elem) {
     
     var time = 0;
@@ -6,7 +7,7 @@ function Stopwatch(elem) {
     
     function update() {
         if(this.isOn){
-          time += delta();   
+          time += delta();
         }
        
         var formattedTime = timeFormatter(time);
@@ -62,6 +63,12 @@ function Stopwatch(elem) {
           time = 0;
         update();  
         }
-        
+           
     };
+    
+  document.getElementById('thunder').addEventListener('click', function(){
+      console.log('it worked');
+      var metresAway = time * 0.33;
+      document.getElementById('currentRadius').value = metresAway;
+  })
     };

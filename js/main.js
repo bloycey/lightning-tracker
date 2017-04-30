@@ -12,12 +12,32 @@ function start() {
     document.getElementById('thunder').style.display = "block";
 }
 
+function getPathFromUrl(URL) {
+  return url.split(/[?#]/)[0];
+}
+
 function stop() {
-    document.getElementById('lightning').style.display = "block";
     document.getElementById('thunder').style.display = "none";
+    document.getElementById('reset').style.display = "block";
   watch.stop();
     applyPos();
     
+}
+
+//If a query string exists THEN hide the "Saw Lightning" Button
+if(document.location.search.length) {
+   document.getElementById('lightning').style.display = "none";
+    
+}
+
+//If a query string DOES NOT exist THEN hide the "Reset" Button
+if(!document.location.search.length) {
+    document.getElementById('reset').style.display = "none";
+    document.getElementById('lightningSummary').style.display = "none";
+}
+
+function reset() {
+   window.location.href =  window.location.href.split("?")[0]; //Remove query string. 
 }
 
 function getParameterByName(name, url) {
@@ -30,14 +50,13 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 };
 
-// This example creates circles on the map, representing populations in North
-// America.
 
-// First, create an object containing LatLng and population for each city.
 
 
 $( document ).ready(function() {
   
+    document.getElementById('lightningSummary').innerHTML = "The lightning struck approximately " + currentRadius.toFixed(2) + " metres from your current location.";
+    
 });
 
 var currentRadius = parseFloat(getParameterByName('Radius'));
@@ -53,6 +72,8 @@ var citymap = {
     center: {lat: currentLat, lng: currentLong},
     population: currentRadius
     }
+    
+    
 };
 
 
@@ -180,17 +201,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 
-function applyPos(){
+function applyPos(){  
    document.getElementById('currentLat').value = pos.lat;
     document.getElementById('currentLong').value = pos.lng;
 };
 
-
-
-function testFunc(){
-    console.log("starting test");
-    citymap.currentLocation.center.lat = pos.lat;
-    citymap.currentLocation.center.lnt = pos.lng;
-    console.log("it is done");
-}
-;

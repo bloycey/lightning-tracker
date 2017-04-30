@@ -50,9 +50,9 @@ html, body {
     padding: 10px;
 }
 
-#lightning, #thunder {
+#lightning, #thunder, #reset {
     position: absolute;
-    bottom: -40px;
+    bottom: -50px;
     left: 40%;
     width: 20%;
 }
@@ -61,7 +61,6 @@ html, body {
 #thunder {
     display: none;
 }
-
 
 
 
