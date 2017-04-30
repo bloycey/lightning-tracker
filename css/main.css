@@ -68,6 +68,11 @@ html, body {
         width: 90vw;
         left: 5vw;
     }
+    
+    #lightning, #thunder, #reset {
+        width: 80%;
+        left: 10%;
+    }
 }
 
 
