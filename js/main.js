@@ -1,3 +1,22 @@
+
+var timer = document.getElementById('timer');
+var toggleBtn = document.getElementById('toggle');
+var resetBtn = document.getElementById('reset');
+
+var watch = new Stopwatch(timer);
+
+toggleBtn.addEventListener('click', function() {
+   if(watch.isOn) {
+       watch.stop();
+   } else {
+       watch.start();
+   }
+}); 
+
+resetBtn.addEventListener('click', function() {
+   watch.reset();
+});
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -51,11 +70,7 @@ function initMap() {
       pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
-      };
-  
-        
-
-        
+      };       
         
 var markerCurrent = new google.maps.Marker({
     position: pos,

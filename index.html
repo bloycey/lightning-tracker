@@ -59,9 +59,14 @@ Radius <input type="text" name="Radius" value="70000"><br>
 <input type="text" name="lat" class="hidden" id="currentLat" value="lsangh">
 <input type="text" name="long" class="hidden" id="currentLong" value="lsangh"> 
       <button id="cityRadius" type="submit" value="Submit" onclick="applyPos()">SUBMIT</button>
-      <button onclick="testFunc()">TESTING BUTTON</button>
+      
 </form>
     <div id="map"></div>
+    <div id="timer-container">
+    <h1 id="timer">00.00.000</h1>
+    <button id="toggle">Start</button><button id="reset">Reset</button>
+    </div>
+    
    
 
       <footer>
@@ -70,8 +75,9 @@ Radius <input type="text" name="Radius" value="70000"><br>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>
-
+        <script src="js/stopwatch.js"></script>
         <script src="js/main.js"></script>
+        
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
