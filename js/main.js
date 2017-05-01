@@ -51,7 +51,7 @@ function getParameterByName(name, url) {
 
 
 $( document ).ready(function() {
-  
+  initMap();
     document.getElementById('lightningSummary').innerHTML = "The lightning struck approximately " + currentRadius.toFixed(2) + " metres \(or " + (currentRadius / 1000).toFixed(2) + "km\) from your current location.";
     
 });
