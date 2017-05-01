@@ -6,32 +6,25 @@ var resetBtn = document.getElementById('reset');
 var watch = new Stopwatch(timer);
 
 
+
+
+
 function start() {
     watch.start();
-    document.getElementById('lightning').style.display = "none";
+   document.getElementById('lightning').style.display = "none";
+   document.getElementById('instructions').style.display = "none";
     document.getElementById('thunder').style.display = "block";
 }
 
 function stop() {
     document.getElementById('thunder').style.display = "none";
-    document.getElementById('reset').style.display = "block";
-  watch.stop();
-    applyPos();
-    
+  document.getElementById('instructions').style.display = "none";
+   document.getElementById('reset').style.display = "block";
+  watch.stop();  
+          applyPos();    
 }
 
-//If a query string exists THEN hide the "Saw Lightning" Button
-if(document.location.search.length) {
-   document.getElementById('lightning').style.display = "none";
-   document.getElementById('timer').style.display = "none"; 
-    
-}
 
-//If a query string DOES NOT exist THEN hide the "Reset" Button
-if(!document.location.search.length) {
-    document.getElementById('reset').style.display = "none";
-    document.getElementById('lightningSummary').style.display = "none";
-}
 
 function reset() {
    window.location.href =  window.location.href.split("?")[0]; //Remove query string. 
@@ -52,8 +45,22 @@ function getParameterByName(name, url) {
 
 
 $( document ).ready(function() {
+    
   
     document.getElementById('lightningSummary').innerHTML = "The lightning struck approximately " + currentRadius.toFixed(2) + " metres \(or " + (currentRadius / 1000).toFixed(2) + "km\) from your current location.";
+    
+    //If a query string exists THEN hide the "Saw Lightning" Button
+if(document.location.search.length) {
+   document.getElementById('lightning').style.display = "none";
+   document.getElementById('timer').style.display = "none";
+     document.getElementById('instructions').style.display = "none";
+}
+
+//If a query string DOES NOT exist THEN hide the "Reset" Button
+if(!document.location.search.length) {
+    document.getElementById('reset').style.display = "none";
+    document.getElementById('lightningSummary').style.display = "none";
+}
     
 });
 
@@ -74,8 +81,7 @@ var citymap = {
     
 };
 
-
-
+var markerMoved = false;
 var map, pos, currentLocation, infoWindow;
 function initMap() {
     
@@ -89,16 +95,40 @@ function initMap() {
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      pos = {
+    
+        if(document.location.search.length) {
+            
+        pos = {
+        lat: currentLat,
+        lng: currentLong
+      }   
+            
+        } else {
+            
+          pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
-      };       
+      }   
+            
+            
+        }
+        
+     ;       
         
 var markerCurrent = new google.maps.Marker({
     position: pos,
     map: map,
+    draggable:true,
     //title: 'Hello World!'
   });
+        
+    google.maps.event.addListener(markerCurrent, 'drag', function(event){
+    markerMoved = true;
+    document.getElementById("currentLat").value = this.getPosition().lat();
+    pos.lat = this.getPosition().lat();    
+    document.getElementById("currentLong").value = this.getPosition().lng();
+    pos.lng = this.getPosition().lng();
+});
 
       infoWindow.setPosition(pos);
       //infoWindow.setContent('Location found.');
@@ -128,6 +158,8 @@ var markerCurrent = new google.maps.Marker({
       
   }
     
+    
+    
 };
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -141,8 +173,13 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
 
-function applyPos(){  
-   document.getElementById('currentLat').value = pos.lat;
-    document.getElementById('currentLong').value = pos.lng;
+function applyPos(){ 
+    if(markerMoved = true){
+      document.getElementById('currentLat').value = pos.lat;
+    document.getElementById('currentLong').value = pos.lng;       
+    }
+  
 };
+
+
 

@@ -31,18 +31,21 @@
     <div id="map"></div>
     <div id="timer-container">
     <h1 id="timer">00.00.000</h1>
-    <button id="lightning" onclick="start()">Saw lightning!</button>
+    <div id="instructions" class="alert alert-info">
+  <strong>How to Use:</strong> Drag the pin to your location. Click the button when you see lightning. Click again when you hear thunder.
+</div>
+    <button class="btn btn-danger" id="lightning" onclick="start()">Saw lightning!</button>
     
        
-    <p id="lightningSummary"></p>
+    <div class="alert alert-success" id="lightningSummary"></div>
     
-<button id="reset" onclick="reset()">Reset Lightning Tracker</button>
+<button id="reset" class="btn btn-default"onclick="reset()">Reset Lightning Tracker</button>
    
    <form>
        <input type="text" class="hidden" id="currentRadius" name="Radius" value="70000"><br>
-<input type="text" name="lat" class="hidden" id="currentLat" value="lsangh">
-<input type="text" name="long" class="hidden" id="currentLong" value="lsangh"> 
-        <button type="submit" id="thunder" onclick="stop()">Heard Thunder!</button>
+<input type="text" name="lat" class="hidden" id="currentLat" value="">
+<input type="text" name="long" class="hidden" id="currentLong" value=""> 
+        <button type="submit" class="btn btn-danger"id="thunder" onclick="stop()">Heard Thunder!</button>
     </form>
     </div>
     

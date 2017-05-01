@@ -33,7 +33,7 @@ html, body {
 
 #timer-container {
     position: absolute;
-    top: 35vh;
+    bottom: 15vh;
     width:40vw;
     left: 30vw;
     text-align: center;
