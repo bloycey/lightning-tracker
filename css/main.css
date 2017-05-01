@@ -52,9 +52,9 @@ html, body {
 
 #lightning, #thunder, #reset {
     position: absolute;
-    bottom: -50px;
-    left: 40%;
-    width: 20%;
+    bottom: -30px;
+    left: 35%;
+    width: 30%;
 }
 
 

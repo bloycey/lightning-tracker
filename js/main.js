@@ -35,6 +35,7 @@ if(!document.location.search.length) {
 
 function reset() {
    window.location.href =  window.location.href.split("?")[0]; //Remove query string. 
+    initMap();
 }
 
 function getParameterByName(name, url) {
