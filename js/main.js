@@ -21,7 +21,7 @@ function stop() {
   document.getElementById('instructions').style.display = "none";
    document.getElementById('reset').style.display = "block";
   watch.stop();  
-          applyPos();    
+        applyPos();    
 }
 
 
@@ -175,7 +175,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function applyPos(){ 
     if(markerMoved = true){
-      document.getElementById('currentLat').value = pos.lat;
+    document.getElementById('currentLat').value = pos.lat;
     document.getElementById('currentLong').value = pos.lng;       
     }
   
